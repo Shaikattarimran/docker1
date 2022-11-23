@@ -10,7 +10,7 @@
     }
   }
   provisioner "remote-exec" {
-    inline - [
+    inline = [
       "sudo chmod 777 /tmp/script.sh"
       "sudo apt update"
       "sudo apt update"
