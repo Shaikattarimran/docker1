@@ -1,3 +1,9 @@
+  lifecycle {
+    create_before_destroy = "true"
+  }
+  # lifecycle {
+  #   create_before_destroy = "true"
+  # }
   provisioner "file" {
     source      = "script.sh"
     destination = "/tmp/script.sh"
@@ -12,9 +18,7 @@
   provisioner "remote-exec" {
     inline = [
       "sudo chmod 777 /tmp/script.sh",
-      "sudo tmp/script.sh",
-      "sudo apt update",
-      "sudo apt install jq unzip -y"
+      "sudo /tmp/script.sh",
     ]
     connection {
       type        = "ssh"
