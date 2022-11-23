@@ -1,9 +1,5 @@
-  lifecycle {
-    create_before_destroy = "true"
-  }
-  # lifecycle {
-  #   create_before_destroy = "true"
-  # }
+resource "null_resource" "excuitve-file-script" {
+  count = var.env == "prod" ? 3 : 1
   provisioner "file" {
     source      = "script.sh"
     destination = "/tmp/script.sh"
@@ -28,3 +24,4 @@
       host = element(aws_instance.public-server.*.public_ip, count.index)
     }
   }
+}
